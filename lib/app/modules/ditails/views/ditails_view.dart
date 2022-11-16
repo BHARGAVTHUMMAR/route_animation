@@ -17,21 +17,116 @@ class DitailsView extends GetWidget<DitailsController> {
       },
       child: SafeArea(
         child: Scaffold(
-            body: Container(
-          height: MySize.safeHeight,
-          width: MySize.safeWidth,
-          color: appTheme.primaryTheme,
-          child: Column(
-            children: [
-              SizedBox(height: 100),
-              getView(
-                  dis: controller.data!.Dis.toString(),
-                  vag: controller.data!.vag.toString(),
-                  name: controller.data!.categoriesName.toString(),
-                  image: controller.data!.Image.toString()),
-            ],
+          body: Container(
+            height: MySize.safeHeight,
+            width: MySize.safeWidth,
+            color: appTheme.primaryTheme,
+            child: Column(
+              children: [
+                SizedBox(height: 100),
+                getView(
+                    dis: controller.data!.Dis.toString(),
+                    vag: controller.data!.vag.toString(),
+                    name: controller.data!.categoriesName.toString(),
+                    image: controller.data!.Image.toString()),
+              ],
+            ),
           ),
-        )),
+          backgroundColor: appTheme.primaryTheme,
+          bottomNavigationBar: GestureDetector(
+            onTap: () {
+              showModalBottomSheet(
+                context: context,
+                builder: (BuildContext context) {
+                  return Container(
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 60,
+                          color: appTheme.shedowColor,
+                          child: Center(
+                              child: Text(
+                            "Welcome to " +
+                                controller.data!.categoriesName.toString(),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey[200],
+                                fontSize: 30),
+                          )),
+                        ),
+                        Container(
+                            height: MySize.getHeight(373),
+                            width: MySize.getWidth(360),
+                            child: Column(children: [
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Container(
+                                child: RotationTransition(
+                                  turns: Tween(begin: 0.0, end: 1.0)
+                                      .animate(controller.animationController!),
+                                  child: Image.asset(imagePath +
+                                      controller.data!.Image.toString()),
+                                ),
+                                height: 100,
+                                width: 100,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    shape: BoxShape.circle),
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Text(
+                                "Distance to sun",
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Text(
+                                controller.data!.Dis.toString(),
+                                style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Text(
+                                "Distance to Earth",
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Text(
+                                controller.data!.vag.toString(),
+                                style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ]),
+                            color: appTheme.primaryTheme),
+                      ],
+                    ),
+                  );
+                },
+              );
+            },
+            child: Container(
+              height: 50,
+              width: 320,
+              decoration: BoxDecoration(
+                  color: Colors.grey,
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(20),
+                      topLeft: Radius.circular(20))),
+            ),
+          ),
+        ),
       ),
     );
   }
