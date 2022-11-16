@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:warranty_app/constants/sizeConstant.dart';
+import 'package:ui_demo/app/constants/sizeConstant.dart';
 
 class BaseTheme {
-  Color get primaryTheme => fromHex('#4BB382');
-  Color get textGrayColor => fromHex("#9e9e9e");
+  Color get primaryTheme => fromHex('#152238');
+  Color get shedowColor => fromHex("#1c2e4a");
   Color get ErrorText => fromHex("#FF0000");
 
   List<BoxShadow> get getShadow {
