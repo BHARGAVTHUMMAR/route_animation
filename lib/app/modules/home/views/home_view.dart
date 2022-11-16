@@ -75,10 +75,10 @@ class HomeView extends GetWidget<HomeController> {
       alignment: Alignment.centerRight,
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: 20, right: 15),
+          padding: const EdgeInsets.only(top: 20, right: 20),
           child: Container(
             height: 150,
-            width: 320,
+            width: (MySize.isMini) ? 300 : 280,
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -148,7 +148,7 @@ class HomeView extends GetWidget<HomeController> {
           ),
         ),
         Positioned(
-            right: 280,
+            right: (MySize.isMini) ? 280 : 250,
             top: 45,
             child: Container(
               child: RotationTransition(

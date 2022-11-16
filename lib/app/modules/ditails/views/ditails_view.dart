@@ -55,7 +55,9 @@ class DitailsView extends GetWidget<DitailsController> {
                           )),
                         ),
                         Container(
-                            height: MySize.getHeight(373),
+                            height: (MySize.isMini)
+                                ? MySize.getHeight(373)
+                                : MySize.getHeight(381),
                             width: MySize.getWidth(360),
                             child: Column(children: [
                               SizedBox(
